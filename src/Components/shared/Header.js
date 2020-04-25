@@ -1,12 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import {Navbar,Nav,NavDropdown,Container} from 'react-bootstrap'
-import {Context} from '../../context/'
+import {AuthContext} from '../../context/'
 export default function Header() {
-    const context = useContext(Context)
-
-    useEffect(()=> {
-        console.log(context)
-    },[])
+    const {auth} = useContext(AuthContext)
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
     <Container>
@@ -17,8 +13,8 @@ export default function Header() {
       </Nav>
       <Nav className="justify-content-between">
         {
-          context.token? 
-          <NavDropdown title={context.user} id="basic-nav-dropdown">
+          auth? 
+          <NavDropdown title={auth.user} id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">MEUS DADOS</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">SAIR</NavDropdown.Item>
           </NavDropdown>

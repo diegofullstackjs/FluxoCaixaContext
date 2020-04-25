@@ -12,6 +12,7 @@ export function isauth() {
         error: "Usuario nao autenticado"
     }
 }
+
 export const api = axios.create({
     baseURL: "http://www.acompanhantes.io",
     headers: {
