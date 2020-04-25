@@ -1,9 +1,20 @@
 import React from 'react';
-
-
+import {Container} from 'react-bootstrap'
+import {AuthProvider} from './context/'
+import Header from './Components/shared/Header';
+import {BrowserRouter as Router} from 'react-router-dom'
+import Routes from './routes/index';
 function App() {
   return (
- <h1>hello</h1>
+    <AuthProvider> 
+    <Router>  
+    <Header /> 
+      <Container>
+                 <Routes />    
+      </Container>  
+    </Router> 
+    </AuthProvider>
+
   );
 }
 
