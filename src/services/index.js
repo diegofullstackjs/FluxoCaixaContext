@@ -13,5 +13,8 @@ export function isauth() {
     }
 }
 export const api = axios.create({
-    baseURL: "http://www.acompanhantes.io"
+    baseURL: "http://www.acompanhantes.io",
+    headers: {
+        "Content-Type" : "application/json"
+    }
 })
