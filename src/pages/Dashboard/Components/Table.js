@@ -9,6 +9,7 @@ export default function TableFluxo({fluxo}) {
     <Table striped bordered hover>
     <thead>
       <tr>
+        <th>Caixa</th>
         <th>Tipo</th>
         <th>Quantidade</th>
         <th>Categoria</th>
@@ -20,6 +21,7 @@ export default function TableFluxo({fluxo}) {
      table.map((item) => {
         return (
             <tr key={item._id}>
+            <td>{item.id_caixa.name}</td>
             <td>{item.tipo}</td>
             <td>{item.quantidade}</td>
             <td>{item.id_categorias.name}</td>
