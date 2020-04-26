@@ -1,5 +1,5 @@
 import React,{createContext,useState,useEffect} from 'react'
-import {api,isauth} from '../services/'
+import {api} from '../services/'
 
 
 export const AuthContext = createContext({})
@@ -8,8 +8,17 @@ export const AuthProvider = ({children}) => {
     const [auth,setAuth] = useState(null);
 
      useEffect(() => {
-        let data = isauth();
-        setAuth(data)
+        let token = localStorage.getItem('token')
+        let user = localStorage.getItem('user')
+        if(token && user) {
+            setAuth({
+                ...auth,
+                user,
+                token
+            })
+        }else {
+            setAuth(null)
+        }
      },[])
      async function signIn(form){
         const response = await api.post('/user/login',form)

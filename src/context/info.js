@@ -10,28 +10,50 @@ export const UserInfo = createContext(null)
 
 export const UserInfoProvider = ({children}) =>{
     const {auth} = useContext(AuthContext);
-    const [data,setData] = useState({
-        dados: []
-    })
     const headers = {
         "authorization" :  `Bearer ${auth.token}`
     }
-     useEffect(() => {
-         setData({
-             ...data,
-             loading:true
-         })
-        api.get('/me',{headers}).then((response) => {
+    function loadingData(){
+        setData({
+            ...data,
+            loading:true
+        })
+        api.get('/',{headers}).then((response) => {
             setData({
                 ...data,
                 dados: response.data,
                 loading: false,
             })
         })
+    }
+    const [data,setData] = useState({
+        dados: []
+    })
+    const createCategorie = (form) => {
+        api.post('/task/categorias/create',form,{headers})
+        .then((response) => {
+            console.log(response.data)
+            if(response.data._id)
+            {
+                setData({
+                    ...data,
+                    msg:{
+                        type: "success",
+                        to: "categorias",
+                        message: "Categoria adcionada com sucesso"
+                    }
+                })
+            }
+        })
+    }
+
+
+     useEffect(() => {
+        loadingData()
     },[])
 
     return (
-        <UserInfo.Provider value={{data}}>
+        <UserInfo.Provider value={{createCategorie,data}}>
             {children}
         </UserInfo.Provider>
     )

@@ -8,13 +8,11 @@ export function isauth() {
             user : localStorage.getItem('user')
         }
     }
-    return {
-        error: "Usuario nao autenticado"
-    }
+    return false
 }
 
 export const api = axios.create({
-    baseURL: "http://www.acompanhantes.io",
+    baseURL: "http://localhost:3333",
     headers: {
         "Content-Type" : "application/json"
     }
