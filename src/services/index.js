@@ -8,9 +8,7 @@ export function isauth() {
             user : localStorage.getItem('user')
         }
     }
-    return {
-        error: "Usuario nao autenticado"
-    }
+    return false
 }
 
 export const api = axios.create({
