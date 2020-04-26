@@ -18,7 +18,7 @@ export const UserInfoProvider = ({children}) =>{
             ...data,
             loading:true
         })
-        api.get('/me',{headers}).then((response) => {
+        api.get('/',{headers}).then((response) => {
             setData({
                 ...data,
                 dados: response.data,
@@ -32,6 +32,7 @@ export const UserInfoProvider = ({children}) =>{
     const createCategorie = (form) => {
         api.post('/task/categorias/create',form,{headers})
         .then((response) => {
+            console.log(response.data)
             if(response.data._id)
             {
                 setData({
