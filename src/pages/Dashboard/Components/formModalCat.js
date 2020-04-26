@@ -1,9 +1,9 @@
 import React,{useState} from 'react';
+import ProopTypes from 'prop-types'
 import {  Modal,Form,
     Button} from 'react-bootstrap'
-// import { Container } from './styles';
 
-export default function ModalCat({contextCategoria,message}) {
+function ModalCat({contextCategoria,message}) {
     const [show, setShow] = useState(false);
     const [form,setform] = useState({});
     const handleClose = () => setShow(false);
@@ -59,3 +59,8 @@ export default function ModalCat({contextCategoria,message}) {
     </>
   );
 }
+ModalCat.ProopTypes = {
+  contextCategoria : ProopTypes.func.isRequired
+}
+
+export default ModalCat
