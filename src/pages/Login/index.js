@@ -1,4 +1,4 @@
-import React, { useState,useContext,useEffect } from 'react';
+import React, { useState,useContext } from 'react';
 import {Row,Col,Form,Button} from 'react-bootstrap'
 import {AuthContext} from '../../context/'
 export default function LoginPage() {
